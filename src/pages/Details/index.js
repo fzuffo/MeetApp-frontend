@@ -1,18 +1,24 @@
 import React from 'react';
-
+import { useSelector } from 'react-redux';
 import { Container, Content } from './styles';
-import banner from '~/assets/banner.svg';
+import { Link } from 'react-router-dom';
+
+// FORMAT DATA FROM API SAGA
 
 export default function Details() {
+  const data = useSelector(state => state.meetup);
+
   return (
     <Container>
       <Content>
         <div className="meetupHeader">
-          <strong>Meetup de React Native</strong>
+          <strong>{data.title}</strong>
           <div>
-            <button className="editButton" type="button">
-              Editar
-            </button>
+            <Link to="/meetup/update">
+              <button className="editButton" type="button">
+                Editar
+              </button>
+            </Link>
             <button className="cancelButton" type="button">
               Cancelar
             </button>
@@ -20,20 +26,12 @@ export default function Details() {
         </div>
 
         <div>
-          <img src={banner} alt="Meetup Banner" />
-          <strong>
-            O Meetup de React Native é um evento que reúne a comunidade de
-            desenvolvimento mobile utilizando React a fim de compartilhar
-            conhecimento. Todos são convidados.
-            <br />
-            <br />
-            Caso queira participar como palestrante do meetup envie um e-mail
-            para organizacao@meetuprn.com.br.
-          </strong>
+          <img src={data.File.url} alt="Meetup Banner" />
+          <strong>{data.description}</strong>
         </div>
         <div id="dateLocation">
-          <span>24 de Junho, às 20h</span>
-          <span>Rua Gembala, 260</span>
+          <span>{data.dateFormatted}</span>
+          <span>{data.location}</span>
         </div>
       </Content>
     </Container>

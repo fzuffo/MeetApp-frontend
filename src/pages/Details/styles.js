@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { darken } from 'polished';
 
 export const Container = styled.div`
-  /* border: 1px solid #d43; */
   padding: 52px;
 `;
 

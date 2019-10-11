@@ -3,10 +3,13 @@ import { darken } from 'polished';
 
 export const Container = styled.div`
   /* border: 1px solid #d43; */
+
   padding: 52px;
 `;
 
+// ----->> remove all comments
 export const Content = styled.div`
+
   max-width: 940px;
   margin: 0px auto;
 
@@ -43,13 +46,14 @@ export const Content = styled.div`
 
       ul {
         margin-top: 50px;
+        width: 940px;
         /* border: 1px solid #dd4; */
 
         li {
+          cursor: pointer;
           display: flex;
-
           justify-content: space-between;
-          width: 940px;
+          max-width: 940px;
           height: 62px;
           background: rgba(0, 0, 0, 0.1);
           margin-bottom: 10px;
