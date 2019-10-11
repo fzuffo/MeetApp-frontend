@@ -8,7 +8,7 @@ import SignUp from '../pages/SignUp';
 import Dashboard from '../pages/Dashboard';
 import Profile from '../pages/Profile';
 import Details from '../pages/Details';
-import Update from '../pages/Update';
+import FormData from '../pages/FormData';
 
 export default function Routes() {
   return (
@@ -19,7 +19,8 @@ export default function Routes() {
       <Route path="/dashboard" component={Dashboard} isPrivate />
       <Route path="/profile" component={Profile} isPrivate />
       <Route path="/meetup/details" component={Details} isPrivate />
-      <Route path="/meetup/update" component={Update} isPrivate />
+      <Route path="/meetup/update" component={FormData} isPrivate />
+      <Route path="/meetup/create" component={FormData} isPrivate />
 
       {/* <Route path="/" component={() => <h1>404</h1>} /> */}
     </Switch>

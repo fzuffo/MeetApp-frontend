@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
-import notFound from '~/assets/notFound.png';
 
 export const Container = styled.div`
   /* border: 1px solid #d43; */
@@ -33,6 +32,18 @@ export const Content = styled.div`
       font-size: 16px;
     }
 
+    textarea {
+      margin-top: 20px;
+      max-width: 940px;
+      border-radius: 4px;
+      border: 0;
+      background-color: rgba(0, 0, 0, 0.2);
+      height: 200px;
+      color: rgba(255, 255, 255, 0.5);
+      padding: 15px 15px;
+      font-size: 16px;
+    }
+
     button {
       align-self: flex-end;
       margin: 20px 0 0;
@@ -52,12 +63,4 @@ export const Content = styled.div`
       }
     }
   }
-`;
-
-export const BannerInput = styled.image`
-  border-radius: 4px;
-  mix-blend-mode: normal;
-  max-width: 940px;
-  height: 300px;
-  background: rgba(0, 0, 0, 0.4);
 `;

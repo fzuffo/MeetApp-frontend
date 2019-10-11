@@ -4,12 +4,14 @@ import { useDispatch } from 'react-redux';
 import { format, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 
-import { Link } from 'react-router-dom';
 import history from '~/services/history';
 import api from '~/services/api';
 import { Container, Content } from './styles';
 
-import { meetupSelected } from '~/store/modules/meetup/actions';
+import {
+  meetupSelected,
+  clearMeetupSelected,
+} from '~/store/modules/meetup/actions';
 
 export default function Dashboard() {
   const [meetup, setMeetup] = useState([]);
@@ -34,10 +36,16 @@ export default function Dashboard() {
     loadMeetup();
   }, []);
 
-  function handlePage(meetupInfo) {
+  function handleDetailPage(meetupInfo) {
     dispatch(meetupSelected(meetupInfo));
 
     return history.push('/meetup/details');
+  }
+
+  function handleCreatePage() {
+    dispatch(clearMeetupSelected());
+
+    return history.push('/meetup/create');
   }
 
   return (
@@ -45,15 +53,15 @@ export default function Dashboard() {
       <Content>
         <div>
           <strong>Meus meetups</strong>
-          <Link to="/meetup/new">
-            <button type="button">Novo meetup</button>
-          </Link>
+          <button type="button" onClick={handleCreatePage}>
+            Novo meetup
+          </button>
         </div>
 
         <div>
           <ul>
             {meetup.map(m => (
-              <li key={m.id} onClick={() => handlePage(m)}>
+              <li key={m.id} onClick={() => handleDetailPage(m)}>
                 <strong>{m.title}</strong>
                 <span>{m.dateFormatted}</span>
               </li>

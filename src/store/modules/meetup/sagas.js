@@ -6,9 +6,8 @@ import api from '~/services/api';
 import { updateMeetupSuccess, meetupSelected } from './actions';
 
 import history from '~/services/history';
-import { timeout } from 'q';
 
-function* meetupRequest({ payload }) {
+function* updateMeetupRequest({ payload }) {
   try {
     const {
       title,
@@ -17,8 +16,8 @@ function* meetupRequest({ payload }) {
       location,
       file_id,
     } = payload.data.dataUpdate;
+
     const meetupData = payload.data.data;
-    // console.tron.log('payload', payload.data);
 
     const response = yield call(api.put, `meetups/${meetupData.id}`, {
       title,
@@ -45,7 +44,28 @@ function* meetupSuccess({ meetup }) {
   }, 3800);
 }
 
+function* createMeetupRequest({ payload }) {
+  try {
+    const { title, description, date, location, file_id } = payload.data;
+
+    const response = yield call(api.post, `meetups/`, {
+      title,
+      description,
+      date,
+      location,
+      file_id,
+    });
+
+    yield put(updateMeetupSuccess(response.data));
+  } catch (err) {
+    toast.error('Falha na atualização dos dados, favor verifique novamente.');
+  }
+}
+
 export default all([
-  takeLatest('@meetup/UPDATE_MEETUP_REQUEST', meetupRequest),
+  takeLatest('@meetup/UPDATE_MEETUP_REQUEST', updateMeetupRequest),
   takeLatest('@meetup/UPDATE_MEETUP_SUCCESS', meetupSuccess),
+
+  takeLatest('@meetup/CREATE_MEETUP_REQUEST', createMeetupRequest),
+  takeLatest('@meetup/CREATE_MEETUP_SUCCESS', meetupSuccess),
 ]);
