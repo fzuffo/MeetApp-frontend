@@ -4,8 +4,9 @@ import { toast } from 'react-toastify';
 import api from '~/services/api';
 
 import {
-  updateMeetupSuccess,
   meetupSelected,
+  updateMeetupSuccess,
+  createMeetupSuccess,
   cancelMeetupSuccess,
 } from './actions';
 
@@ -37,7 +38,7 @@ function* updateMeetupRequest({ payload }) {
   }
 }
 
-function* meetupSuccess({ meetup }) {
+function* updateSuccess({ meetup }) {
   const response = yield call(api.get, `meetups/${meetup.id}`);
 
   yield put(meetupSelected(response.data));
@@ -60,11 +61,21 @@ function* createMeetupRequest({ payload }) {
       file_id,
     });
 
-    yield put(updateMeetupSuccess(response.data));
-    toast.success('Meeup cancelado com sucesso.');
+    yield put(createMeetupSuccess(response.data));
+    toast.success('Meetup cancelado com sucesso.');
   } catch (err) {
     toast.error('Falha na atualização dos dados, favor verifique novamente.');
   }
+}
+
+function* createSuccess({ meetup }) {
+  const response = yield call(api.get, `meetup/${meetup.id}`);
+  yield put(meetupSelected(response.data));
+  toast.success('Meetup creado com sucesso');
+
+  setTimeout(function() {
+    history.push('/meetup/details');
+  }, 3800);
 }
 
 function* cancelMeetupRequest({ payload }) {
@@ -87,10 +98,10 @@ function* cancelMeetupRequest({ payload }) {
 
 export default all([
   takeLatest('@meetup/UPDATE_MEETUP_REQUEST', updateMeetupRequest),
-  takeLatest('@meetup/UPDATE_MEETUP_SUCCESS', meetupSuccess),
+  takeLatest('@meetup/UPDATE_MEETUP_SUCCESS', updateSuccess),
 
   takeLatest('@meetup/CREATE_MEETUP_REQUEST', createMeetupRequest),
-  takeLatest('@meetup/CREATE_MEETUP_SUCCESS', meetupSuccess),
+  takeLatest('@meetup/CREATE_MEETUP_SUCCESS', createSuccess),
 
   takeLatest('@meetup/CANCEL_MEETUP_REQUEST', cancelMeetupRequest),
 ]);
