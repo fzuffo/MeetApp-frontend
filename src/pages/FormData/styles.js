@@ -3,22 +3,28 @@ import { darken } from 'polished';
 
 export const Container = styled.div`
   /* border: 1px solid #d43; */
-  height: 100%;
-  background: linear-gradient(180deg, #22202c, #402845);
+`;
+
+export const BannerDiv = styled.div`
+  background: rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 940px;
+  max-height: 300px;
+  /* height: auto; */
+  border-radius: 4px;
+  mix-blend-mode: normal;
 `;
 
 export const Content = styled.div`
-  width: 100%;
   max-width: 940px;
-  text-align: center;
-  /* border: 1px solid #d23; */
+  margin: 52px auto;
 
   form {
     display: flex;
     flex-direction: column;
+    margin: 0 auto;
 
     input {
       margin-top: 20px;

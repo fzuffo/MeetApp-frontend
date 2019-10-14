@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useField } from '@rocketseat/unform';
 
 import api from '~/services/api';
-import imageNotFound from '~/assets/notFound.png';
+import imageSelect from '~/assets/imageSelect.png';
 
 import { Container } from './styles';
 
@@ -42,7 +42,8 @@ export default function BannerInput() {
   return (
     <Container>
       <label htmlFor="banner">
-        <img src={preview || imageNotFound} alt="" />
+        <img src={preview || imageSelect} alt="" />
+        {/* {!preview && <label> Selecionar Imagem </label>} */}
 
         <input
           type="file"

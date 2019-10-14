@@ -1,12 +1,20 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Container, Content } from './styles';
 import { Link } from 'react-router-dom';
+import { cancelMeetupRequest } from '~/store/modules/meetup/actions';
 
 // FORMAT DATA FROM API SAGA
 
 export default function Details() {
   const data = useSelector(state => state.meetup);
+
+  const dispatch = useDispatch();
+
+  function handleCancelMeetup(id) {
+    alert('Deseja cancelar o meetup?');
+    dispatch(cancelMeetupRequest(id));
+  }
 
   return (
     <Container>
@@ -19,7 +27,12 @@ export default function Details() {
                 Editar
               </button>
             </Link>
-            <button className="cancelButton" type="button">
+
+            <button
+              onClick={() => handleCancelMeetup(data.id)}
+              className="cancelButton"
+              type="button"
+            >
               Cancelar
             </button>
           </div>

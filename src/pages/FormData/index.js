@@ -8,10 +8,18 @@ import {
   createMeetupRequest,
 } from '~/store/modules/meetup/actions';
 
+import * as Yup from 'yup';
+
+const schema = Yup.object().shape({
+  title: Yup.string().required('Campo obrigatório'),
+  description: Yup.string().required('Campo obrigatório'),
+  date: Yup.date().required('Campo obrigatório'),
+  location: Yup.string().required('Campo obrigatório'),
+});
+
 export default function FormData() {
   const dispatch = useDispatch();
   const data = useSelector(state => state.meetup);
-  console.tron.log(data);
 
   function handleSubmitUpdate(dataUpdate) {
     dispatch(updateMeetupRequest({ dataUpdate, data }));
@@ -25,6 +33,7 @@ export default function FormData() {
     <Container>
       <Content>
         <Form
+          schema={schema}
           initialData={data}
           onSubmit={data === null ? handleSubmitNew : handleSubmitUpdate}
         >

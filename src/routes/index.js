@@ -21,8 +21,6 @@ export default function Routes() {
       <Route path="/meetup/details" component={Details} isPrivate />
       <Route path="/meetup/update" component={FormData} isPrivate />
       <Route path="/meetup/create" component={FormData} isPrivate />
-
-      {/* <Route path="/" component={() => <h1>404</h1>} /> */}
     </Switch>
   );
 }
