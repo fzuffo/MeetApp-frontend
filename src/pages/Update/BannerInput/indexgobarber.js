@@ -2,15 +2,13 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useField } from '@rocketseat/unform';
 
 import api from '~/services/api';
-import imageSelect from '~/assets/imageSelect.png';
 
 import { Container } from './styles';
 
-export default function BannerInput() {
-  const { defaultValue, registerField } = useField('File');
+export default function AvatarInput() {
+  const { defaultValue, registerField } = useField('avatar');
 
   const [file, setFile] = useState(defaultValue && defaultValue.id);
-
   const [preview, setPreview] = useState(defaultValue && defaultValue.url);
 
   const ref = useRef();
@@ -18,13 +16,13 @@ export default function BannerInput() {
   useEffect(() => {
     if (ref.current) {
       registerField({
-        name: 'file_id',
+        name: 'avatar_id',
         ref: ref.current,
         path: 'dataset.file',
       });
     }
     // eslint-disable-next-line
-  }, []);
+  }, [ref.current]);
 
   async function handleChange(e) {
     const data = new FormData();
@@ -32,7 +30,6 @@ export default function BannerInput() {
     data.append('file', e.target.files[0]);
 
     const response = await api.post('files', data);
-
     const { id, url } = response.data;
 
     setFile(id);
@@ -41,13 +38,17 @@ export default function BannerInput() {
 
   return (
     <Container>
-      <label htmlFor="banner">
-        <img src={preview || imageSelect} alt="" />
-        {/* {!preview && <label> Selecionar Imagem </label>} */}
+      <label htmlFor="avatar">
+        <img
+          src={
+            preview || 'https://api.adorable.io/avatars/50/abott@adorable.png'
+          }
+          alt=""
+        />
 
         <input
           type="file"
-          id="banner"
+          id="avatar"
           accept="image/*"
           data-file={file}
           onChange={handleChange}

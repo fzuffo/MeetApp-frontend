@@ -14,6 +14,7 @@ export default function Details() {
   function handleCancelMeetup(id) {
     alert('Deseja cancelar o meetup?');
     dispatch(cancelMeetupRequest(id));
+    // redirect to /dashboard after delete - in sagas function
   }
 
   return (

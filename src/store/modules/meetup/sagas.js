@@ -62,20 +62,16 @@ function* createMeetupRequest({ payload }) {
     });
 
     yield put(createMeetupSuccess(response.data));
-    toast.success('Meetup cancelado com sucesso.');
+    toast.success('Meetup criado com sucesso.');
   } catch (err) {
     toast.error('Falha na atualização dos dados, favor verifique novamente.');
   }
 }
 
 function* createSuccess({ meetup }) {
-  const response = yield call(api.get, `meetup/${meetup.id}`);
+  console.tron.log(meetup);
+  const response = yield call(api.get, `meetups/${meetup.id}`);
   yield put(meetupSelected(response.data));
-  toast.success('Meetup creado com sucesso');
-
-  setTimeout(function() {
-    history.push('/meetup/details');
-  }, 3800);
 }
 
 function* cancelMeetupRequest({ payload }) {
@@ -83,14 +79,10 @@ function* cancelMeetupRequest({ payload }) {
 
   try {
     yield call(api.delete, `meetups/${id}`);
-
+    history.push('/dashboard');
     yield put(cancelMeetupSuccess());
 
-    toast.success('Meetup atualizado com sucesso.');
-
-    setTimeout(function() {
-      history.push('/');
-    }, 1000);
+    toast.success('Meetup cancelado com sucesso.');
   } catch (err) {
     toast.error('Falha ao cancelar, favor verifique novamente.');
   }
