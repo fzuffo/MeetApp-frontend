@@ -50,6 +50,12 @@ export const Content = styled.div`
       font-size: 16px;
     }
 
+    span {
+      color: #ff0000;
+      margin-left: 5px;
+      margin-top: 5px;
+    }
+
     button {
       align-self: flex-end;
       margin: 20px 0 0;

@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Container, Content } from './styles';
 import { Link } from 'react-router-dom';
 import { cancelMeetupRequest } from '~/store/modules/meetup/actions';
+import { IoMdCalendar } from 'react-icons/io';
+import { MdLocationOn } from 'react-icons/md';
 
 // FORMAT DATA FROM API SAGA
 
@@ -44,8 +46,14 @@ export default function Details() {
           <strong>{data.description}</strong>
         </div>
         <div id="dateLocation">
-          <span>{data.dateFormatted}</span>
-          <span>{data.location}</span>
+          <span>
+            <IoMdCalendar />
+            {data.dateFormatted}
+          </span>
+          <span>
+            <MdLocationOn />
+            {data.location}
+          </span>
         </div>
       </Content>
     </Container>

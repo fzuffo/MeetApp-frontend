@@ -69,9 +69,11 @@ function* createMeetupRequest({ payload }) {
 }
 
 function* createSuccess({ meetup }) {
-  console.tron.log(meetup);
-  const response = yield call(api.get, `meetups/${meetup.id}`);
-  yield put(meetupSelected(response.data));
+  yield put(meetupSelected(meetup));
+
+  setTimeout(function() {
+    history.push('/dashboard');
+  }, 3000);
 }
 
 function* cancelMeetupRequest({ payload }) {

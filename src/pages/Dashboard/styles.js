@@ -66,7 +66,12 @@ export const Content = styled.div`
         span {
           color: rgba(255, 255, 255, 0.6);
           font-size: 16px;
-          margin: auto 74px;
+          margin: auto 30px;
+        }
+
+        svg {
+          margin-right: 20px;
+          font-size: 24px;
         }
       }
     }

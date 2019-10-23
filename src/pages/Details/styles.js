@@ -80,6 +80,10 @@ export const Content = styled.div`
       font-size: 16px;
       color: rgba(255, 255, 255, 0.6);
       margin-left: 30px;
+
+      svg {
+        margin-right: 10px;
+      }
     }
   }
 `;

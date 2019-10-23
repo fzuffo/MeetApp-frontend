@@ -8,6 +8,8 @@ import history from '~/services/history';
 import api from '~/services/api';
 import { Container, Content } from './styles';
 
+import { MdChevronRight } from 'react-icons/md';
+
 import {
   meetupSelected,
   clearMeetupSelected,
@@ -19,13 +21,17 @@ export default function Dashboard() {
 
   useEffect(() => {
     async function loadMeetup() {
-      const response = await api.get('meetups');
+      const response = await api.get('meetups/user');
 
       const data = response.data.map(m => ({
         ...m,
-        dateFormatted: format(parseISO(m.date), "d 'de' MMMM', às' h'h'", {
-          locale: pt,
-        }),
+        dateFormatted: format(
+          parseISO(m.date),
+          "d 'de' MMMM 'de' yyyy'  , às' h'h'",
+          {
+            locale: pt,
+          }
+        ),
         dateInput: format(parseISO(m.date), 'd/M/yyyy', {
           locale: pt,
         }),
@@ -63,7 +69,10 @@ export default function Dashboard() {
             {meetup.map(m => (
               <li key={m.id} onClick={() => handleDetailPage(m)}>
                 <strong>{m.title}</strong>
-                <span>{m.dateFormatted}</span>
+                <div>
+                  <span>{m.dateFormatted}</span>
+                  <MdChevronRight color="#fff" />
+                </div>
               </li>
             ))}
           </ul>

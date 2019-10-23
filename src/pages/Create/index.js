@@ -5,6 +5,7 @@ import BannerInput from './BannerInput';
 import { Container, Content } from './styles';
 import { createMeetupRequest } from '~/store/modules/meetup/actions';
 
+import history from '~/services/history';
 import * as Yup from 'yup';
 
 const schema = Yup.object().shape({
@@ -21,7 +22,6 @@ export default function FormData() {
 
   function handleSubmitNew(newData) {
     dispatch(createMeetupRequest(newData));
-    console.tron.log('newData', newData);
   }
 
   return (
