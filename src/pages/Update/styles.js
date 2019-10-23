@@ -50,7 +50,7 @@ export const Content = styled.div`
       font-size: 16px;
     }
 
-    button {
+    > button {
       align-self: flex-end;
       margin: 20px 0 0;
       height: 42px;

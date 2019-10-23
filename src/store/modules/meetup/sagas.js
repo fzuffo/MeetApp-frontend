@@ -38,15 +38,18 @@ function* updateMeetupRequest({ payload }) {
   }
 }
 
-function* updateSuccess({ meetup }) {
-  const response = yield call(api.get, `meetups/${meetup.id}`);
+// function updateSuccess({ meetup }) {
+function updateSuccess() {
+  // const response = yield call(api.get, `meetups/${meetup.id}`);
 
-  yield put(meetupSelected(response.data));
-  toast.success('Meetup atualizado com sucesso.');
+  // yield put(meetupSelected(response.data));
+  toast.success(
+    'Meetup atualizado com sucesso. Você será redirecionado para a Dashboard'
+  );
 
   setTimeout(function() {
-    history.push('/meetup/details');
-  }, 3800);
+    history.push('/dashboard');
+  }, 3000);
 }
 
 function* createMeetupRequest({ payload }) {

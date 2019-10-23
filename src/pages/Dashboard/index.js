@@ -32,10 +32,9 @@ export default function Dashboard() {
             locale: pt,
           }
         ),
-        dateInput: format(parseISO(m.date), 'd/M/yyyy', {
-          locale: pt,
-        }),
       }));
+
+      // 10/23/2019, 10:00 AM
 
       setMeetup(data);
     }

@@ -1,11 +1,14 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+
 import { Form, Input } from '@rocketseat/unform';
+
 import BannerInput from './BannerInput';
 import { Container, Content } from './styles';
 import { createMeetupRequest } from '~/store/modules/meetup/actions';
 
-import history from '~/services/history';
+import ReactDatePicker from './ReactDatePicker';
+
 import * as Yup from 'yup';
 
 const schema = Yup.object().shape({
@@ -36,7 +39,9 @@ export default function FormData() {
             name="description"
             placeholder="Descrição completa"
           />
-          <Input name="date" placeholder="Data do meetup" />
+
+          <ReactDatePicker name="date" />
+
           <Input name="location" placeholder="Localização" />
 
           <button type="submit">Salvar meetup</button>

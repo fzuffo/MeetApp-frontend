@@ -5,12 +5,14 @@ import BannerInput from './BannerInput';
 import { Container, Content } from './styles';
 import { updateMeetupRequest } from '~/store/modules/meetup/actions';
 
+import ReactDatePicker from './ReactDatePicker';
+
 import * as Yup from 'yup';
 
 const schema = Yup.object().shape({
   title: Yup.string().required('Campo obrigatório'),
   description: Yup.string().required('Campo obrigatório'),
-  date: Yup.date().required('Campo obrigatório'),
+  date: Yup.string().required('Campo obrigatório'),
   location: Yup.string().required('Campo obrigatório'),
   file_id: Yup.string().required('Campo obrigatório'),
 });
@@ -19,7 +21,12 @@ export default function Update() {
   const dispatch = useDispatch();
   const data = useSelector(state => state.meetup);
 
-  function handleSubmitUpdate(dataUpdate) {
+  function handleSubmitUpdate(dataForm) {
+    const dataUpdate = dataForm;
+    dataUpdate.date = new Date(dataForm.date);
+    console.tron.log(dataUpdate);
+    // const dataUpdate = parseISO(dataUpdate.date);
+    // console.tron.log('dataUp', );
     dispatch(updateMeetupRequest({ dataUpdate, data }));
   }
 
@@ -30,12 +37,15 @@ export default function Update() {
           <BannerInput name="file_id" />
 
           <Input name="title" placeholder="Titulo" />
+
           <Input
             multiline
             name="description"
             placeholder="Descrição completa"
           />
-          <Input name="date" placeholder="Data do meetup" />
+
+          <ReactDatePicker name="date" />
+
           <Input name="location" placeholder="Localização" />
 
           <button type="submit">Salvar meetup</button>
