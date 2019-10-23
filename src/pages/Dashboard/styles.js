@@ -35,7 +35,10 @@ export const Content = styled.div`
       font-size: 16px;
       transition: background 0.2s;
       text-align: right;
-      padding-right: 20px;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
 
       &:hover {
         background: ${darken(0.03, '#F94D6A')};

@@ -19,9 +19,13 @@ export const Content = styled.div`
       font-weight: bold;
     }
 
+    div {
+      display: flex;
+    }
+
     .editButton {
-      text-align: right;
-      padding-right: 20px;
+      display: flex;
+      padding: 0 20px;
       margin: 0 15px;
       width: 116px;
       height: 42px;
@@ -31,6 +35,8 @@ export const Content = styled.div`
       border-radius: 4px;
       font-size: 16px;
       transition: background 0.2s;
+      justify-content: space-around;
+      align-items: center;
 
       &:hover {
         background: ${darken(0.03, '#4DBAF9')};
@@ -38,8 +44,9 @@ export const Content = styled.div`
     }
 
     .cancelButton {
+      display: flex;
       text-align: right;
-      padding-right: 20px;
+      padding: 0 20px;
       width: 138px;
       height: 42px;
       background: #f94d6a;
@@ -48,6 +55,8 @@ export const Content = styled.div`
       border-radius: 4px;
       font-size: 16px;
       transition: background 0.2s;
+      justify-content: space-around;
+      align-items: center;
 
       &:hover {
         background: ${darken(0.03, '#f94d6a')};
@@ -67,16 +76,12 @@ export const Content = styled.div`
     color: #fff;
   }
 
-  /* div#dateLocation{
-    display: flex;
-    flex
-  } */
-
   div#dateLocation {
     margin-top: 30px;
     max-width: 940px;
 
     span {
+      align-items: center;
       font-size: 16px;
       color: rgba(255, 255, 255, 0.6);
       margin-left: 30px;

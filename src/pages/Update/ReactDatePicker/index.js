@@ -11,7 +11,7 @@ export default function DatePicker({ name }) {
   const meetupSelected = useSelector(state => state.meetup);
 
   const ref = useRef(null);
-  const { fieldName, registerField, defaultValue, error } = useField(name);
+  const { fieldName, registerField, error } = useField(name);
 
   const [selected, setSelected] = useState(parseISO(meetupSelected.date));
 

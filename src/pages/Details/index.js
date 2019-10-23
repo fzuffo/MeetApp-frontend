@@ -4,9 +4,7 @@ import { Container, Content } from './styles';
 import { Link } from 'react-router-dom';
 import { cancelMeetupRequest } from '~/store/modules/meetup/actions';
 import { IoMdCalendar } from 'react-icons/io';
-import { MdLocationOn } from 'react-icons/md';
-
-// FORMAT DATA FROM API SAGA
+import { MdLocationOn, MdEdit, MdDeleteForever } from 'react-icons/md';
 
 export default function Details() {
   const data = useSelector(state => state.meetup);
@@ -14,10 +12,9 @@ export default function Details() {
   const dispatch = useDispatch();
 
   function handleCancelMeetup(id) {
-    alert('Deseja cancelar o meetup?');
     dispatch(cancelMeetupRequest(id));
-    // redirect to /dashboard after delete - in sagas function
   }
+  // redirecting to /dashboard after delete - in sagas function
 
   return (
     <Container>
@@ -27,7 +24,8 @@ export default function Details() {
           <div>
             <Link to="/meetup/update">
               <button className="editButton" type="button">
-                Editar
+                <MdEdit size={20} color="#fff" />
+                <span>Editar</span>
               </button>
             </Link>
 
@@ -36,6 +34,7 @@ export default function Details() {
               className="cancelButton"
               type="button"
             >
+              <MdDeleteForever size={20} color="#fff" />
               Cancelar
             </button>
           </div>
@@ -50,6 +49,7 @@ export default function Details() {
             <IoMdCalendar />
             {data.dateFormatted}
           </span>
+
           <span>
             <MdLocationOn />
             {data.location}

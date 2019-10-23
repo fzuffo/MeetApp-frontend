@@ -1,6 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
 import ReactDatePicker from 'react-datepicker';
-import { setHours, setMinutes, getHours } from 'date-fns';
 
 import { useField } from '@rocketseat/unform';
 
@@ -8,13 +7,9 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 export default function DatePicker({ name }) {
   const ref = useRef(null);
-  const { fieldName, registerField, defaultValue, error } = useField(name);
+  const { fieldName, registerField, error } = useField(name);
 
-  const nowHours = getHours(new Date());
-
-  const [selected, setSelected] = useState(
-    setHours(setMinutes(new Date(), 0), nowHours)
-  );
+  const [selected, setSelected] = useState('');
 
   useEffect(() => {
     registerField({

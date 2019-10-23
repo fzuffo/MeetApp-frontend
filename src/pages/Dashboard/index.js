@@ -8,7 +8,7 @@ import history from '~/services/history';
 import api from '~/services/api';
 import { Container, Content } from './styles';
 
-import { MdChevronRight } from 'react-icons/md';
+import { MdChevronRight, MdAddCircleOutline } from 'react-icons/md';
 
 import {
   meetupSelected,
@@ -33,9 +33,6 @@ export default function Dashboard() {
           }
         ),
       }));
-
-      // 10/23/2019, 10:00 AM
-
       setMeetup(data);
     }
     loadMeetup();
@@ -58,8 +55,9 @@ export default function Dashboard() {
       <Content>
         <div>
           <strong>Meus meetups</strong>
+
           <button type="button" onClick={handleCreatePage}>
-            Novo meetup
+            <MdAddCircleOutline size={20} color="#FFF" /> Novo meetup
           </button>
         </div>
 

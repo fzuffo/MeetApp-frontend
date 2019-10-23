@@ -4,6 +4,7 @@ import { Form, Input } from '@rocketseat/unform';
 import BannerInput from './BannerInput';
 import { Container, Content } from './styles';
 import { updateMeetupRequest } from '~/store/modules/meetup/actions';
+import { MdAddCircleOutline } from 'react-icons/md';
 
 import ReactDatePicker from './ReactDatePicker';
 
@@ -48,7 +49,10 @@ export default function Update() {
 
           <Input name="location" placeholder="Localização" />
 
-          <button type="submit">Salvar meetup</button>
+          <button type="submit">
+            <MdAddCircleOutline size={20} color="#fff" />
+            Salvar meetup
+          </button>
         </Form>
       </Content>
     </Container>
