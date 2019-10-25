@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { format, parseISO } from 'date-fns';
+import { parseISO } from 'date-fns';
+import { format } from 'date-fns-tz';
 import pt from 'date-fns/locale/pt';
 
 import history from '~/services/history';
@@ -27,9 +28,10 @@ export default function Dashboard() {
         ...m,
         dateFormatted: format(
           parseISO(m.date),
-          "d 'de' MMMM 'de' yyyy'  , às' h'h'",
+          "d 'de' MMMM 'de' yyyy', às' H'h'",
           {
             locale: pt,
+            // timezone: 'America/Sao_Paulo',
           }
         ),
       }));

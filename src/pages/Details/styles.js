@@ -64,18 +64,35 @@ export const Content = styled.div`
     }
   }
 
-  img {
-    max-width: 100%;
-    margin: 50px 0 25px 0;
+  .descriptionDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+
+    div#backgroundBanner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 300px;
+      width: 100%;
+      border-radius: 4px;
+      margin-top: 20px;
+      background: #000;
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
   }
 
-  strong {
+  strong#description {
     font-size: 18px;
     font-weight: normal;
     line-height: 32px;
     color: #fff;
   }
-
   div#dateLocation {
     margin-top: 30px;
     max-width: 940px;

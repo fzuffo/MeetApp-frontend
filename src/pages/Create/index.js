@@ -25,6 +25,7 @@ export default function FormData() {
   const data = useSelector(state => state.meetup);
 
   function handleSubmitNew(newData) {
+    console.tron.log(newData);
     dispatch(createMeetupRequest(newData));
   }
 

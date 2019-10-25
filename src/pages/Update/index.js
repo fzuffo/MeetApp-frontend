@@ -25,9 +25,7 @@ export default function Update() {
   function handleSubmitUpdate(dataForm) {
     const dataUpdate = dataForm;
     dataUpdate.date = new Date(dataForm.date);
-    console.tron.log(dataUpdate);
-    // const dataUpdate = parseISO(dataUpdate.date);
-    // console.tron.log('dataUp', );
+
     dispatch(updateMeetupRequest({ dataUpdate, data }));
   }
 

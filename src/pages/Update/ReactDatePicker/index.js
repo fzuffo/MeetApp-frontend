@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import ReactDatePicker from 'react-datepicker';
 import { useSelector } from 'react-redux';
-import { parseISO } from 'date-fns';
+// import { parseISO } from 'date-fns';
 
 import { useField } from '@rocketseat/unform';
 
@@ -13,7 +13,8 @@ export default function DatePicker({ name }) {
   const ref = useRef(null);
   const { fieldName, registerField, error } = useField(name);
 
-  const [selected, setSelected] = useState(parseISO(meetupSelected.date));
+  // const [selected, setSelected] = useState(parseISO(meetupSelected.date));
+  const [selected, setSelected] = useState(meetupSelected.date);
 
   useEffect(() => {
     registerField({

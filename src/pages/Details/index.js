@@ -40,10 +40,12 @@ export default function Details() {
           </div>
         </div>
 
-        <div>
-          <img src={data.File.url} alt="Meetup Banner" />
-          <strong>{data.description}</strong>
+        <div className="descriptionDiv">
+          <div id="backgroundBanner">
+            <img src={data.File.url} alt="Meetup Banner" />
+          </div>
         </div>
+        <strong id="description">{data.description}</strong>
         <div id="dateLocation">
           <span>
             <IoMdCalendar />
