@@ -6,6 +6,18 @@ import { updateProfileRequest } from '~/store/modules/user/actions';
 
 import { Container } from './styles';
 
+import * as Yup from 'yup';
+
+const schema = Yup.object().shape({
+  name: Yup.string().required(),
+  email: Yup.string()
+    .email()
+    .required(),
+  oldPassword: Yup.string(),
+  password: Yup.string(),
+  confirmPassword: Yup.string(),
+});
+
 export default function Profile() {
   const dispatch = useDispatch();
   const profile = useSelector(state => state.user.profile);
@@ -16,7 +28,7 @@ export default function Profile() {
 
   return (
     <Container>
-      <Form initialData={profile} onSubmit={handleSubmit}>
+      <Form schema={schema} initialData={profile} onSubmit={handleSubmit}>
         <Input name="name" placeholder="Nome completo" />
         <Input name="email" type="email" placeholder="Seu endereço de e-mail" />
 

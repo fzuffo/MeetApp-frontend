@@ -15,7 +15,7 @@ import * as Yup from 'yup';
 const schema = Yup.object().shape({
   title: Yup.string().required('Campo obrigatório'),
   description: Yup.string().required('Campo obrigatório'),
-  date: Yup.date().required('Campo obrigatório'),
+  date: Yup.string().required('Campo obrigatório'),
   location: Yup.string().required('Campo obrigatório'),
   file_id: Yup.string().required('Campo obrigatório'),
 });
@@ -25,7 +25,6 @@ export default function FormData() {
   const data = useSelector(state => state.meetup);
 
   function handleSubmitNew(newData) {
-    console.tron.log(newData);
     dispatch(createMeetupRequest(newData));
   }
 

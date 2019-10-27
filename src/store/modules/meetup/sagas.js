@@ -38,11 +38,7 @@ function* updateMeetupRequest({ payload }) {
   }
 }
 
-// function updateSuccess({ meetup }) {
 function updateSuccess() {
-  // const response = yield call(api.get, `meetups/${meetup.id}`);
-
-  // yield put(meetupSelected(response.data));
   toast.success(
     'Meetup atualizado com sucesso. Você será redirecionado para a Dashboard'
   );
