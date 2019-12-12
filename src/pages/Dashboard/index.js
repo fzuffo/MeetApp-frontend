@@ -5,11 +5,10 @@ import { parseISO } from 'date-fns';
 import { format } from 'date-fns-tz';
 import pt from 'date-fns/locale/pt';
 
+import { MdChevronRight, MdAddCircleOutline } from 'react-icons/md';
 import history from '~/services/history';
 import api from '~/services/api';
 import { Container, Content } from './styles';
-
-import { MdChevronRight, MdAddCircleOutline } from 'react-icons/md';
 
 import {
   meetupSelected,

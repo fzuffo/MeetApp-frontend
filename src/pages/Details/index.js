@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Container, Content } from './styles';
 import { Link } from 'react-router-dom';
-import { cancelMeetupRequest } from '~/store/modules/meetup/actions';
 import { IoMdCalendar } from 'react-icons/io';
 import { MdLocationOn, MdEdit, MdDeleteForever } from 'react-icons/md';
+import { cancelMeetupRequest } from '~/store/modules/meetup/actions';
+import { Container, Content } from './styles';
 
 export default function Details() {
   const data = useSelector(state => state.meetup);
