@@ -14,7 +14,6 @@ import { cancelMeetupRequest } from '~/store/modules/meetup/actions';
 import { Container, Content } from './styles';
 
 export default function Details({ match }) {
-  // const data = useSelector(state => state.meetup);
   const dispatch = useDispatch();
   const [meetup, setMeetup] = useState([]);
 
@@ -43,13 +42,6 @@ export default function Details({ match }) {
       }));
 
       const newData = data.find(element => element.id === Number(meetupId));
-      // if (data.find(element => element.id === Number(meetupId))) {
-      //   console.tron.log('passou');
-      // }
-      console.tron.log('meetupdData', newData);
-      if (!newData) {
-        console.tron.log('passou');
-      }
 
       setMeetup(newData);
     }

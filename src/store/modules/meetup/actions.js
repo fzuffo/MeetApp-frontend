@@ -31,9 +31,10 @@ export function updateMeetupRequest(data) {
   };
 }
 
-export function updateMeetupSuccess() {
+export function updateMeetupSuccess(meetup) {
   return {
     type: '@meetup/UPDATE_MEETUP_SUCCESS',
+    meetup,
   };
 }
 

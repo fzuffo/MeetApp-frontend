@@ -8,7 +8,7 @@ import pt from 'date-fns/locale/pt';
 import { MdChevronRight, MdAddCircleOutline } from 'react-icons/md';
 import history from '~/services/history';
 import api from '~/services/api';
-import { Container, Content } from './styles';
+import { Container, Content, List } from './styles';
 
 import {
   meetupSelected,
@@ -63,14 +63,19 @@ export default function Dashboard() {
 
         <div>
           <ul>
+            {console.tron.log(meetup)}
             {meetup.map(m => (
-              <li key={m.id} onClick={() => handleDetailPage(m)}>
-                <strong>{m.title}</strong>
+              <List
+                key={m.id}
+                onClick={() => handleDetailPage(m)}
+                isPast={m.past}
+              >
+                <strong id="strongList">{m.title}</strong>
                 <div>
                   <span>{m.dateFormatted}</span>
                   <MdChevronRight color="#fff" />
                 </div>
-              </li>
+              </List>
             ))}
           </ul>
         </div>
