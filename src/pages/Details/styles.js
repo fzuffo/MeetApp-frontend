@@ -3,6 +3,18 @@ import { darken } from 'polished';
 
 export const Container = styled.div`
   padding: 52px;
+
+  div#infoNotFound {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+
+    span {
+      color: #fff;
+      font-size: 32px;
+      font-weight: bold;
+    }
+  }
 `;
 
 export const Content = styled.div`

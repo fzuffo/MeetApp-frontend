@@ -1,14 +1,13 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
+import { MdAddCircleOutline } from 'react-icons/md';
+import * as Yup from 'yup';
 import BannerInput from './BannerInput';
 import { Container, Content } from './styles';
 import { updateMeetupRequest } from '~/store/modules/meetup/actions';
-import { MdAddCircleOutline } from 'react-icons/md';
 
 import ReactDatePicker from './ReactDatePicker';
-
-import * as Yup from 'yup';
 
 const schema = Yup.object().shape({
   title: Yup.string().required('Campo obrigatório'),

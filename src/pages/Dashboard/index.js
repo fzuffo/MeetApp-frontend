@@ -30,7 +30,6 @@ export default function Dashboard() {
           "d 'de' MMMM 'de' yyyy', às' H'h'",
           {
             locale: pt,
-            // timezone: 'America/Sao_Paulo',
           }
         ),
       }));
@@ -42,7 +41,7 @@ export default function Dashboard() {
   function handleDetailPage(meetupInfo) {
     dispatch(meetupSelected(meetupInfo));
 
-    return history.push('/meetup/details');
+    return history.push(`/meetup/${meetupInfo.id}`);
   }
 
   function handleCreatePage() {
