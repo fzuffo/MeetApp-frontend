@@ -38,13 +38,12 @@ function* updateMeetupRequest({ payload }) {
   }
 }
 
-function updateSuccess() {
-  toast.success(
-    'Meetup atualizado com sucesso. Você será redirecionado para a Dashboard'
-  );
+function updateSuccess({ meetup }) {
+  console.tron.log('updatesuccess', meetup);
+  toast.success('Meetup atualizado com sucesso.');
 
   setTimeout(function() {
-    history.push('/dashboard');
+    history.push(`/meetup/${meetup.id}`);
   }, 3000);
 }
 
@@ -61,7 +60,7 @@ function* createMeetupRequest({ payload }) {
     });
 
     yield put(createMeetupSuccess(response.data));
-    toast.success('Meetup criado com sucesso.');
+    toast.success('Meetup atualizado com sucesso.');
   } catch (err) {
     toast.error('Falha na atualização dos dados, favor verifique novamente.');
   }
@@ -71,7 +70,7 @@ function* createSuccess({ meetup }) {
   yield put(meetupSelected(meetup));
 
   setTimeout(function() {
-    history.push('/dashboard');
+    history.push(`/meetup/${meetup.id}`);
   }, 3000);
 }
 
