@@ -7,6 +7,7 @@ import { MdLocationOn, MdEdit, MdDeleteForever } from 'react-icons/md';
 import { format, parseISO } from 'date-fns';
 
 import pt from 'date-fns/locale/pt';
+
 import api from '~/services/api';
 
 import { cancelMeetupRequest } from '~/store/modules/meetup/actions';
@@ -71,7 +72,7 @@ export default function Details({ match }) {
           <div className="meetupHeader">
             <strong>{meetup.title}</strong>
             <div>
-              <Link to="/meetup/update">
+              <Link to={`/meetup/${meetup.id}/update`}>
                 <button className="editButton" type="button">
                   <MdEdit size={20} color="#fff" />
                   <span>Editar</span>
