@@ -63,8 +63,12 @@ export default function Details({ match }) {
         <Content>
           <div className="meetupHeader">
             <strong>{meetup.title}</strong>
-            <div>
-              <Link to={`/meetup/${meetup.id}/update`}>
+            <div style={meetup.past ? { opacity: 0.2 } : { opacity: 1 }}>
+              <Link
+                to={`/meetup/${meetup.id}/update`}
+                style={{ pointerEvents: meetup.past ? 'none' : 'auto' }}
+                className="editButton"
+              >
                 <button className="editButton" type="button">
                   <MdEdit size={20} color="#fff" />
                   <span>Editar</span>
@@ -72,10 +76,12 @@ export default function Details({ match }) {
               </Link>
 
               <button
+                style={{ pointerEvents: meetup.past ? 'none' : 'auto' }}
                 onClick={() => handleCancelMeetup(meetup.id)}
                 className="cancelButton"
                 type="button"
               >
+                {console.tron.log(meetup)}
                 <MdDeleteForever size={20} color="#fff" />
                 Cancelar
               </button>

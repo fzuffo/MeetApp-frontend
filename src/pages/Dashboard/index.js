@@ -63,7 +63,6 @@ export default function Dashboard() {
 
         <div>
           <ul>
-            {console.tron.log(meetup)}
             {meetup.map(m => (
               <List
                 key={m.id}

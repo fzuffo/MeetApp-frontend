@@ -64,6 +64,7 @@ export const Content = styled.div`
       background: #f94d6a;
       font-weight: bold;
       color: #fff;
+
       border-radius: 4px;
       font-size: 16px;
       transition: background 0.2s;
