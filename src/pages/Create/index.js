@@ -46,7 +46,7 @@ export default function FormData() {
 
           <button type="submit">
             <MdAddCircleOutline size={20} color="#fff" />
-            Salvar meetup
+            Salvar meetupp
           </button>
         </Form>
       </Content>
