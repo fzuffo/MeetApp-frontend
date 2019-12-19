@@ -33,8 +33,6 @@ export default function BannerInput() {
 
     const response = await api.post('files', data);
 
-    // console.tron.log('input', response);
-
     const { id, url } = response.data;
 
     setFile(id);

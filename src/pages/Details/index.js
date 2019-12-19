@@ -10,7 +10,10 @@ import pt from 'date-fns/locale/pt';
 
 import api from '~/services/api';
 
-import { cancelMeetupRequest } from '~/store/modules/meetup/actions';
+import {
+  cancelMeetupRequest,
+  meetupSelected,
+} from '~/store/modules/meetup/actions';
 import { Container, Content } from './styles';
 
 export default function Details({ match }) {
@@ -18,12 +21,6 @@ export default function Details({ match }) {
   const [meetup, setMeetup] = useState([]);
 
   const { meetupId } = match.params;
-
-  // const {
-  //   match: {
-  //     params: { meetupId },
-  //   },
-  // } = props;
 
   useEffect(() => {
     async function loadMeetup() {
@@ -44,9 +41,11 @@ export default function Details({ match }) {
       const newData = data.find(element => element.id === Number(meetupId));
 
       setMeetup(newData);
+      dispatch(meetupSelected(newData));
     }
+
     loadMeetup();
-  }, [meetupId]);
+  }, [dispatch, meetupId]);
 
   function handleCancelMeetup(id) {
     dispatch(cancelMeetupRequest(id));
@@ -81,7 +80,6 @@ export default function Details({ match }) {
                 className="cancelButton"
                 type="button"
               >
-                {console.tron.log(meetup)}
                 <MdDeleteForever size={20} color="#fff" />
                 Cancelar
               </button>
