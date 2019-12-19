@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
 import { MdAddCircleOutline } from 'react-icons/md';
@@ -10,7 +10,6 @@ import { Container, Content } from './styles';
 import {
   updateMeetupRequest,
   meetupSelected,
-  clearMeetupSelected,
 } from '~/store/modules/meetup/actions';
 import api from '~/services/api';
 
@@ -43,22 +42,18 @@ export default function Update({ match }) {
             locale: pt,
           }
         ),
-        file_id2: m.file_id,
       }));
 
       const newData = meetupData.find(
         element => element.id === Number(meetupId)
       );
-      console.tron.log('newdata', newData);
-      if (newData) {
-        dispatch(meetupSelected(newData));
-      } else {
-        dispatch(clearMeetupSelected());
-      }
+
+      dispatch(meetupSelected(newData));
     }
 
     loadMeetup();
-  }, [dispatch, meetupId]);
+    // eslint-disable-next-line
+  }, [meetupId]);
 
   function handleSubmitUpdate(dataForm) {
     const dataUpdate = dataForm;

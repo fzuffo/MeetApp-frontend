@@ -39,7 +39,6 @@ function* updateMeetupRequest({ payload }) {
 }
 
 function updateSuccess({ meetup }) {
-  console.tron.log('updatesuccess', meetup);
   toast.success('Meetup atualizado com sucesso.');
 
   setTimeout(function() {

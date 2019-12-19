@@ -10,7 +10,10 @@ import pt from 'date-fns/locale/pt';
 
 import api from '~/services/api';
 
-import { cancelMeetupRequest } from '~/store/modules/meetup/actions';
+import {
+  cancelMeetupRequest,
+  meetupSelected,
+} from '~/store/modules/meetup/actions';
 import { Container, Content } from './styles';
 
 export default function Details({ match }) {
@@ -18,12 +21,6 @@ export default function Details({ match }) {
   const [meetup, setMeetup] = useState([]);
 
   const { meetupId } = match.params;
-
-  // const {
-  //   match: {
-  //     params: { meetupId },
-  //   },
-  // } = props;
 
   useEffect(() => {
     async function loadMeetup() {
@@ -44,9 +41,11 @@ export default function Details({ match }) {
       const newData = data.find(element => element.id === Number(meetupId));
 
       setMeetup(newData);
+      dispatch(meetupSelected(newData));
     }
+
     loadMeetup();
-  }, [meetupId]);
+  }, [dispatch, meetupId]);
 
   function handleCancelMeetup(id) {
     dispatch(cancelMeetupRequest(id));
@@ -63,8 +62,12 @@ export default function Details({ match }) {
         <Content>
           <div className="meetupHeader">
             <strong>{meetup.title}</strong>
-            <div>
-              <Link to={`/meetup/${meetup.id}/update`}>
+            <div style={meetup.past ? { opacity: 0.2 } : { opacity: 1 }}>
+              <Link
+                to={`/meetup/${meetup.id}/update`}
+                style={{ pointerEvents: meetup.past ? 'none' : 'auto' }}
+                className="editButton"
+              >
                 <button className="editButton" type="button">
                   <MdEdit size={20} color="#fff" />
                   <span>Editar</span>
@@ -72,6 +75,7 @@ export default function Details({ match }) {
               </Link>
 
               <button
+                style={{ pointerEvents: meetup.past ? 'none' : 'auto' }}
                 onClick={() => handleCancelMeetup(meetup.id)}
                 className="cancelButton"
                 type="button"

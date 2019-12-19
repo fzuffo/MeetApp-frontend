@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
 
-export const Container = styled.div`
-  /* border: 1px solid #d43; */
-`;
+export const Container = styled.div``;
 
 export const BannerDiv = styled.div`
   background: rgba(0, 0, 0, 0.4);
@@ -12,7 +10,6 @@ export const BannerDiv = styled.div`
   align-items: center;
   max-width: 940px;
   max-height: 300px;
-  /* height: auto; */
   border-radius: 4px;
   mix-blend-mode: normal;
 `;

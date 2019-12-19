@@ -11,8 +11,6 @@ export const Container = styled.div`
   label {
     cursor: pointer;
 
-    /* max-width: 100%; */
-    /* height: 300px; */
     color: rgba(255, 255, 255, 0.4);
 
     &:hover {
