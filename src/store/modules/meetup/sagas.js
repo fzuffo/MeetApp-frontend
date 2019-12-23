@@ -59,7 +59,7 @@ function* createMeetupRequest({ payload }) {
     });
 
     yield put(createMeetupSuccess(response.data));
-    toast.success('Meetup atualizado com sucesso.');
+    toast.success('Meetup criado com sucesso.');
   } catch (err) {
     toast.error('Falha na atualização dos dados, favor verifique novamente.');
   }
